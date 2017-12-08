@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoveTest_Platform", "MoveTest_Platform.csproj", "{30B18256-A06F-BA13-5D86-5DD31652BABE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoveTest_Platform.Editor", "MoveTest_Platform.Editor.csproj", "{DD557C10-7557-B902-890F-709FAE74BF71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{30B18256-A06F-BA13-5D86-5DD31652BABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30B18256-A06F-BA13-5D86-5DD31652BABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30B18256-A06F-BA13-5D86-5DD31652BABE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD557C10-7557-B902-890F-709FAE74BF71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD557C10-7557-B902-890F-709FAE74BF71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD557C10-7557-B902-890F-709FAE74BF71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD557C10-7557-B902-890F-709FAE74BF71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
