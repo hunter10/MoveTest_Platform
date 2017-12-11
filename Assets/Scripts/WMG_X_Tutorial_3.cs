@@ -90,17 +90,18 @@ public class WMG_X_Tutorial_3 : MonoBehaviour
 
     void Update()
     {
-        /*
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine("ProcXTick");
+            //StartCoroutine("ProcXTick");
+            graph.xAxis.AxisNumTicks++;
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            AddData();
-        }
-        */
+        //if (Input.GetKeyDown(KeyCode.A))
+        //{
+        //    AddData();
+        //}
+        
     }
 
     void AddData()
@@ -152,36 +153,30 @@ public class WMG_X_Tutorial_3 : MonoBehaviour
             yield return new WaitForSeconds(plotIntervalSeconds);
             if (!plottingData) break;
 
-            //animateAddPointFromEnd(new Vector2((series1.pointValues.Count == 0 ? 0 : (series1.pointValues[series1.pointValues.Count - 1].x + xInterval)), Random.Range(graph.yAxis.AxisMinValue, graph.yAxis.AxisMaxValue * 1.2f)), plotAnimationSeconds);
-
+            // x값은 현재데이터 인덱스 + xInterval 만큼 계속 증가, y값은 리니어하게 같이 증가
             float x = (series1.pointValues.Count == 0 ? 0 : (series1.pointValues[series1.pointValues.Count - 1].x + xInterval));
             float y = x;
 
+            // 데이터 한개 추가후 애니메이션하기
             animateAddPointFromEnd(new Vector2(x, y), plotAnimationSeconds);
-
-            Debug.Log("series1.pointValues.Count : " + series1.pointValues.Count);
-
-            //if (blinkCurrentPoint)
-            //{
-            //    blinkCurrentPointAnimation();
-            //}
         }
     }
 
     void animateAddPointFromEnd(Vector2 pointVec, float animDuration)
     {
         if (series1.pointValues.Count == 0)
-        { // no end to animate from, just add the point
+        { 
             series1.pointValues.Add(pointVec);
-            //indicatorGO.SetActive(true);
             graph.Refresh(); // Ensures gamobject list of series points is up to date based on pointValues
-                             //updateIndicator();
         }
         else
         {
+            // 애니메이션으로 그래프 증가후 데이터에 추가
             series1.pointValues.Add(series1.pointValues[series1.pointValues.Count - 1]);
+
+            // x값이 최대치에 닿았으면
             if (pointVec.x > graph.xAxis.AxisMaxValue)
-            { // the new point will exceed the x-axis max
+            { 
                 addPointAnimTimeline = 0; // animates from 0 to 1
                 Vector2 oldEnd = new Vector2(series1.pointValues[series1.pointValues.Count - 1].x, series1.pointValues[series1.pointValues.Count - 1].y);
                 Vector2 newStart = new Vector2(series1.pointValues[1].x, series1.pointValues[1].y);
@@ -192,6 +187,7 @@ public class WMG_X_Tutorial_3 : MonoBehaviour
             }
             else
             {
+                // 그냥 선그리기 애니
                 WMG_Anim.animVec2CallbackU(() => series1.pointValues[series1.pointValues.Count - 1], x => series1.pointValues[series1.pointValues.Count - 1] = x, animDuration, pointVec,
                                            () => updateIndicator(), plotEaseType);
             }
@@ -202,16 +198,6 @@ public class WMG_X_Tutorial_3 : MonoBehaviour
     {
         series1.pointValues[series1.pointValues.Count - 1] = WMG_Util.RemapVec2(addPointAnimTimeline, 0, 1, oldEnd, newEnd);
         graph.xAxis.AxisMaxValue = WMG_Util.RemapFloat(addPointAnimTimeline, 0, 1, oldEnd.x, newEnd.x);
-
-        //updateIndicator();
-
-        /*
-        if (moveXaxisMinimum)
-        {
-            series1.pointValues[0] = WMG_Util.RemapVec2(addPointAnimTimeline, 0, 1, oldStart, newStart);
-            graph.xAxis.AxisMinValue = WMG_Util.RemapFloat(addPointAnimTimeline, 0, 1, oldStart.x, newStart.x);
-        }
-        */
     }
 
     void onCompleteAnimateAddPoint()
@@ -219,7 +205,6 @@ public class WMG_X_Tutorial_3 : MonoBehaviour
         if (moveXaxisMinimum)
         {
             series1.pointValues.RemoveAt(0);
-            //blinkCurrentPointAnimation(true);
         }
     }
 

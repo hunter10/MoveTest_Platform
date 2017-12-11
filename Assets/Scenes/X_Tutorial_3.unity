@@ -364,5 +364,5 @@ MonoBehaviour:
   _plottingData: 0
   plotIntervalSeconds: 1
   plotAnimationSeconds: 1
-  xInterval: 1
+  xInterval: 5
   moveXaxisMinimum: 0

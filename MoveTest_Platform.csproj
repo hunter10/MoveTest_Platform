@@ -280,10 +280,14 @@
     <Compile Include="Assets\Graph_Maker\Scripts\WMG_Pie_Graph_Slice.cs" />
     <Compile Include="Assets\Graph_Maker\Scripts\WMG_Ring.cs" />
     <Compile Include="Assets\Graph_Maker\Scripts\WMG_Series.cs" />
+    <Compile Include="Assets\Scripts\BackGroundScroll.cs" />
+    <Compile Include="Assets\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameMng.cs" />
     <Compile Include="Assets\Scripts\Grapher1.cs" />
     <Compile Include="Assets\Scripts\Grapher2.cs" />
     <Compile Include="Assets\Scripts\Jump.cs" />
+    <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Vectrosity_Test.cs" />
     <Compile Include="Assets\Scripts\WMG_X_Tutorial_2.cs" />
     <Compile Include="Assets\Scripts\WMG_X_Tutorial_3.cs" />

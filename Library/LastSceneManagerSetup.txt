@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/X_Tutorial_3.unity
+- path: Assets/Scenes/Infinite_Scroll_Test.unity
   isLoaded: 1
   isActive: 1

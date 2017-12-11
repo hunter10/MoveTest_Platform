@@ -53,7 +53,7 @@ public class GameMng : MonoBehaviour {
 
             long elapsed = DateTime.Now.Ticks - startTime.Ticks;
             TimeSpan tempTime = new TimeSpan(elapsed);
-            Debug.Log(elapsed + ", " + elapsed /1000 + ", " + tempTime.TotalSeconds + ", " + tempTime.TotalMilliseconds + ", " + CalcPow(elapsed / 1000));
+            //Debug.Log(elapsed + ", " + elapsed /1000 + ", " + tempTime.TotalSeconds + ", " + tempTime.TotalMilliseconds + ", " + CalcPow(elapsed / 1000));
 
             resultLabel.text = string.Format("{0:N2}", CalcPow(elapsed / 1000));
             yield return null;
@@ -64,7 +64,7 @@ public class GameMng : MonoBehaviour {
 
     double CalcPow(double elaped)
     {
-        double r = 0.00006f; // 부스타빗에 있던 수치
+        double r = 0.000006f; // 부스타빗에 있던 수치
         return Math.Exp(r * elaped);
     }
 }
