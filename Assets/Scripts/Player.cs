@@ -9,12 +9,20 @@ public class Player : MonoBehaviour {
     public double speed = 1f;
     private Transform tr;
 
-    public float endTime = 10f; // 30초이상 비추
+    public float endTime = 10f;     // 30초이상 비추
     public Text speedLabel;
 
     [Range(0.1f, 1.0f)]
     public float userTrim;          // 0.1 - 1.0
     private double trim;            // 가속 조정값(0.000001f - 0.00001f)
+
+    ParticleSystem speedEffect;
+
+    private void Awake()
+    {
+        speedEffect = GetComponentInChildren<ParticleSystem>();
+        speedEffect.Stop();
+    }
 
     void Start () {
         tr = GetComponent<Transform>();
@@ -52,6 +60,11 @@ public class Player : MonoBehaviour {
             long elapsed = DateTime.Now.Ticks - startTiem.Ticks;
             speed = CalcPow(elapsed / 1000);
             speedLabel.text = string.Format("Speed : {0:N2}", speed);
+
+            if(speed > 5.0f)
+            {
+                speedEffect.Play();
+            }
 
             yield return null;
         }
